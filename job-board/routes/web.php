@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\listing;
+use App\Models\JobListing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use App\Models\listing;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 //all listing
 Route::get('/', function () {
@@ -31,3 +34,6 @@ Route::get('/listing/{id}', function($id){
     'listing' => listing::find($id)
    ]);
 });
+
+
+
