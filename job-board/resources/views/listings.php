@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section("content")
+
 <h1>Listings</h1>
 <h2>
     <?php echo $heading;?>
@@ -8,3 +12,5 @@
    <p><?php echo $listing['description']?></p>
         <?php endforeach; ?>
 </p>
+
+@endsection

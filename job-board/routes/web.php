@@ -26,13 +26,29 @@ Route::get('/', function () {
     ]);
 });
 
-//single listing
-
+/*single listing showing manual 404 code
 Route::get('/listing/{id}', function($id){
-   return view('singlelisting',[
+    $listing  = listing::find($id);
+
+    if($listing){
+        return view('singlelisting',[
     'heading' => "the listing",
     'listing' => listing::find($id)
    ]);
+    }
+    else{
+        abort('404');
+    }
+});
+*/
+
+//single listing showing route model find showing 404
+Route::get('/listing/{listing}', function(listing $listing){
+    
+        return view('singlelisting',[
+       'listing' => $listing
+   ]);
+    
 });
 
 
