@@ -4,6 +4,7 @@ use App\Models\listing;
 use App\Models\JobListing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //all listing
-Route::get('/', function () {
-    return view('listingswithblade', [
-        'heading' => 'Latest Listings',
-        'listings' => listing::all()
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 /*single listing showing manual 404 code
 Route::get('/listing/{id}', function($id){
@@ -43,13 +39,7 @@ Route::get('/listing/{id}', function($id){
 */
 
 //single listing showing route model find showing 404
-Route::get('/listing/{listing}', function(listing $listing){
-    
-        return view('singlelisting',[
-       'listing' => $listing
-   ]);
-    
-});
+Route::get('/listing/{listing}', [ListingController::class, 'show'] );
 
 
 
