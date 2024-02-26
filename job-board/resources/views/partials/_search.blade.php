@@ -1,5 +1,5 @@
 <!-- Search -->
-<form action="">
+<form action="/">
                 <div class="relative border-2 border-gray-100 m-4 rounded-lg">
                     <div class="absolute top-4 left-3">
                         <i
@@ -15,7 +15,7 @@
                     <div class="absolute top-2 right-2">
                         <button
                             type="submit"
-                            class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                            class="h-10 w-20 text-white rounded-lg bg-laravel hover:bg-red-600"
                         >
                             Search
                         </button>

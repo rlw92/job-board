@@ -1,6 +1,4 @@
-@extends("layout")
-
-@section('content')
+<x-layout>
 @include('partials._hero')
 @include('partials._search')
 
@@ -24,7 +22,11 @@
         @endforeach
 </div>
 
-@endsection
+<div class="mt-6 p-4">
+    {{$listings->links()}}
+  </div>
+
+
 
 <!--
 testing php
@@ -43,3 +45,4 @@ $test = 1
 @endif
 
 -->
+</x-layout>

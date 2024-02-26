@@ -26,6 +26,6 @@ class ListingFactory extends Factory
             'description' => $this->faker->paragraph(5),
         ];
             //
-        ;
+            
     }
 }

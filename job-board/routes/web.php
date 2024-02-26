@@ -38,8 +38,14 @@ Route::get('/listing/{id}', function($id){
 });
 */
 
+
+
+//show create form
+Route::get('/listing/create', [ListingController::class, 'create']);
+//post details to database and show the listing 
+Route::post('/listing', [ListingController::class, 'store']);
+
 //single listing showing route model find showing 404
 Route::get('/listing/{listing}', [ListingController::class, 'show'] );
-
 
 
