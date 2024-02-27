@@ -48,4 +48,15 @@ Route::post('/listing', [ListingController::class, 'store']);
 //single listing showing route model find showing 404
 Route::get('/listing/{listing}', [ListingController::class, 'show'] );
 
+//edit submit
+Route::put('/listing/{listing}', [ListingController::class, 'update'] );
+
+//show edit form
+Route::get('/listing/{listing}/edit', [ListingController::class, 'showedit']);
+
+//Delete listing
+Route::delete('/listing/{listing}', [ListingController::class, 'destroy']);
+
+
+
 
