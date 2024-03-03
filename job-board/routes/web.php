@@ -4,6 +4,7 @@ use App\Models\listing;
 use App\Models\JobListing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
 
 /*
@@ -56,6 +57,15 @@ Route::get('/listing/{listing}/edit', [ListingController::class, 'showedit']);
 
 //Delete listing
 Route::delete('/listing/{listing}', [ListingController::class, 'destroy']);
+
+
+//Show register page
+Route::get('/register', [UserController::class, 'create']);
+//create user
+Route::post('/users', [UserController::class, 'store']);
+
+//log user out
+Route::post('/logout', [UserController::class, 'logout']);
 
 
 
