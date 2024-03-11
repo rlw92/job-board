@@ -42,30 +42,41 @@ Route::get('/listing/{id}', function($id){
 
 
 //show create form
-Route::get('/listing/create', [ListingController::class, 'create']);
+Route::get('/listing/create', [ListingController::class, 'create'])->middleware('auth');
 //post details to database and show the listing 
 Route::post('/listing', [ListingController::class, 'store']);
+
+//manage listings
+Route::get('/listing/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 //single listing showing route model find showing 404
 Route::get('/listing/{listing}', [ListingController::class, 'show'] );
 
 //edit submit
-Route::put('/listing/{listing}', [ListingController::class, 'update'] );
+Route::put('/listing/{listing}', [ListingController::class, 'update'] )->middleware('auth');
 
 //show edit form
-Route::get('/listing/{listing}/edit', [ListingController::class, 'showedit']);
+Route::get('/listing/{listing}/edit', [ListingController::class, 'showedit'])->middleware('auth');
 
 //Delete listing
-Route::delete('/listing/{listing}', [ListingController::class, 'destroy']);
+Route::delete('/listing/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
 
 //Show register page
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');;
 //create user
 Route::post('/users', [UserController::class, 'store']);
 
 //log user out
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+//show login form
+Route::get('/login',[UserController::class, 'login'])->name('login')->middleware('guest');;
+
+//login user    test@test.com test123
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+
 
 
 

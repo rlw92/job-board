@@ -14,6 +14,11 @@ class UserController extends Controller
 return view("user.register");
     }
 
+    //show login form
+    public function login(){
+        return view("user.login");
+            }
+
     public function store(Request $request){
         $formFields = $request->validate([
             'name' => 'required',
@@ -46,4 +51,23 @@ return view("user.register");
         return redirect('/')->with('message', 'You have been logged out!');
 
     }
-}
+
+    public function authenticate(Request $request){
+        $formFields = $request->validate([
+                        
+            'email' => ['required', 'email'],
+            'password'=> 'required'
+        ]);
+
+        if(auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+
+            return redirect('/')->with('message', 'You are now logged in!');
+        }
+
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+    }
+        
+    }
+
+
